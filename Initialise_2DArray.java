@@ -24,6 +24,7 @@ public class Initialise_2DArray {
 		}
 		return arr;
 	}
+
 	public static void printArray(int[][] arr) {
 //		To print the 2D array in a single line
 //		System.out.println(Arrays.deepToString(arr));
