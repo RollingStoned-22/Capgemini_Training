@@ -35,11 +35,17 @@ public class Initialise_2DArray {
 
 		/// Using for each loop
 
-		for (int row[] : arr) {
-			for (int num : row) {
-				System.out.print(num + " ");
-			}
-			System.out.println();
+//		for (int row[] : arr) {
+//			for (int num : row) {
+//				System.out.print(num + " ");
+//			}
+//			System.out.println();
+//		}
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = 0; j < arr[i].length; j++) {
+				System.out.print(arr[i][j]+" ");
+			}System.out.println();
 		}
 	}
 }
