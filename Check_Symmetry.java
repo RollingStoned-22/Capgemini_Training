@@ -26,7 +26,7 @@ public class Check_Symmetry {
 		if (isSquare(arr)) {
 			boolean isSymmetric = checkSymmetry(arr);
 			System.out.println(isSymmetric);
-		}else
+		} else
 			System.out.println("Not a Square Matrix");
 	}
 }
