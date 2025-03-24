@@ -7,20 +7,21 @@ public class Driver {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter customer count: ");
 		int size = sc.nextInt();
-		
-		Bank bank = new Bank("HDFC",size);
+
+		Bank bank = new Bank("HDFC", size);
 		boolean flag = true;
-		
-		while(flag) {
+
+		while (flag) {
 			System.out.println("Enter choice: ");
 			System.out.println("1. Add customer\n2. Display Customers\n3. Exit");
 			int ch = sc.nextInt();
-			switch(ch) {
+			switch (ch) {
 			case 1:
 				sc.nextLine();
-				System.out.println("Enter customer name: ");
+				System.out.println("Enter customer name and id: ");
 				String cus_name = sc.nextLine();
-				Customer customer = new Customer(cus_name);
+				int id = sc.nextInt();
+				Customer customer = new Customer(cus_name, id);
 				bank.addCustomer(customer);
 				break;
 			case 2:
@@ -33,5 +34,6 @@ public class Driver {
 				System.out.println("Wrong input");
 			}
 		}
+		sc.close();
 	}
 }
