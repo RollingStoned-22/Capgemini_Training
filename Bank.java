@@ -3,7 +3,7 @@ package one_to_many;
 public class Bank {
 	Customer[] customers;
 	String bank_name;
-	int count = 0;
+	static int count = 0;
 	
 	public Bank(String name, int size) {
 		this.customers = new Customer[size];
@@ -19,6 +19,6 @@ public class Bank {
 	
 	public void displayCustomers() {
 		for(int i = 0; i < count; i++)
-			System.out.println(customers[i].customer_name);
+			System.out.println(customers[i].customer_name+"\t"+customers[i].id);
 	}
 }
