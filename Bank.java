@@ -19,6 +19,6 @@ public class Bank {
 	
 	public void displayCustomers() {
 		for(int i = 0; i < count; i++)
-			System.out.println(customers[i].customer_name);
+			System.out.println(customers[i].customer_name+"\t"+customers[i].id);
 	}
 }
