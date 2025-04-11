@@ -2,7 +2,7 @@ package hashmap_implementation;
 
 import javax.management.RuntimeErrorException;
 
-public class HashMapImplementation {
+public class Map {
 	int size = 16;
 	Entry[] buckets = new Entry[size];
 
