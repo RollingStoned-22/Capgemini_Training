@@ -1,52 +1,85 @@
 package hashmap_implementation;
 
-import javax.management.RuntimeErrorException;
-
-public class Map {
+public class Map extends Object {
 	int size = 16;
 	Entry[] buckets = new Entry[size];
-
-	private int getbucketIndex(int key) {
-		return Math.abs(Integer.hashCode(key)) / size;
+	
+	public int hashCode(<? extends Number> key) {
+		return (Integer)obj;
 	}
 
-	public void put(int key, int value) {
-		Entry newEntry = new Entry(key, value);
-		int index = getbucketIndex(key);
-		System.out.println("Entry is added at index: " + index);
-		Entry temp = buckets[index];
+	private int getbucketIndex(Number key) {
+		return Math.abs(Number.hashCode(key)) % size;
+	}
 
-		if (temp != null) {
-			while (temp != null) {
-				if (temp.key == key) {
-					temp.value = value;
-					return;
-				}
+	public void put(Integer key, Object value) {
+		int index = getbucketIndex(key);
+		System.out.println("Entry is added at index: "+index);
+		Entry head = buckets[index];
+		Entry temp = head;
+		while(temp != null) {
+			if(temp.key.equals(key)) {
+				temp.value = value;
+				return;
+			}
+			temp = temp.next;
+		}
+		Entry newEntry = new Entry(key, value);
+		newEntry.next = buckets[index];
+		buckets[index] = newEntry;
+	}
+	
+	public void printNode(Entry node) {
+		System.out.print(node.key+"\t"+node.value+"\t");
+	}
+	
+	public void displayMap() {
+		for(int i = 0; i < size; i++) {
+			Entry temp = buckets[i];
+			if(temp == null)
+				continue;
+			while(temp != null) {
+				printNode(temp);
 				temp = temp.next;
 			}
-
-			newEntry.next = buckets[index];
-			buckets[index] = newEntry;
-
+			System.out.println();
 		}
 	}
-
-	public int getValue(int key) {
+	
+	public Object getValue(Object key) {
 		int index = getbucketIndex(key);
 		Entry temp = buckets[index];
 		while(temp!=null) {
-			if(temp.key == key)
+			if(temp.equals(key)) 
 				return temp.value;
 			temp = temp.next;
 		}
-		return -1;
+		return Integer.MIN_VALUE;
 	}
 	
-	public static void main(String[] args) {
-		HashMapImplementation map = new HashMapImplementation();
-		map.put(10, 5);
-		map.put(20, 6); 
-		map.put(30, 9);
-		System.out.println(map.getValue(20));
+	public void delete(Object key) {
+		int index = getbucketIndex(key);
+		Entry temp = buckets[index];
+		Entry prev = null;
+		if(temp == null) {
+			System.out.println("Entry doesn't exist");
+			return;
+		}
+		while(temp != null) {
+			if(temp.key.equals(key)) {
+				if(prev == null) {
+					prev = temp;
+					buckets[index] = temp.next;
+					prev.next = null;
+				}
+				else {
+					prev.next = temp.next;
+					temp.next = null;
+				}
+			}
+			prev = temp;
+			temp = temp.next;
+		}
+		
 	}
 }
